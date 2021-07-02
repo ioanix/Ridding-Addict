@@ -119,6 +119,8 @@ class OrderServiceImplTest {
         order.setProductCodes(productCodes);
         order.setProducts(productList);
 
+        appUser.setOrders(Collections.singletonList(order));
+
         Set<String> productCodes1 = new HashSet<>();
         productCodes1.add(bikeWith0Stock.getProductCode());
 
@@ -222,10 +224,18 @@ class OrderServiceImplTest {
     @Test
     void canGetAllOrders() {
 
+        //given
+        given(appUserRepositoryMock.findByUsername(USERNAME)).willReturn(Optional.of(appUser));
+
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        SecurityContextHolder.setContext(securityContext);
+
+        when(SecurityContextHolder.getContext().getAuthentication().getName()).thenReturn(appUser.getUsername());
+
         //when
+        //then
         underTest.getAll();
 
-        //then
-        verify(orderRepositoryMock).findAll();
+        assertThat(underTest.getAll().size()).isEqualTo(1);
     }
 }
