@@ -50,4 +50,11 @@ public abstract class Product extends BaseEntity<Long> {
         this.shortDescription = shortDescription;
         this.category = category;
     }
+    public Product(String name, double price, int quantity, String shortDescription) {
+        this.productCode = String.valueOf(UUID.randomUUID());
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.shortDescription = shortDescription;
+    }
 }

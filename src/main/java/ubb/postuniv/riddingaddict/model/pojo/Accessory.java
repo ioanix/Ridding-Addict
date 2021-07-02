@@ -29,4 +29,9 @@ public class Accessory extends Product {
         super(productCode, name, price, quantity, shortDescription, category, dateAdded);
         this.accessoryType = accessoryType;
     }
+
+    public Accessory(String name, double price, int quantity, String shortDescription, AccessoryType accessoryType) {
+        super(name, price, quantity, shortDescription);
+        this.accessoryType = accessoryType;
+    }
 }

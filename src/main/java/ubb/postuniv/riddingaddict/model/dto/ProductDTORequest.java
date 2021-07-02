@@ -1,5 +1,6 @@
 package ubb.postuniv.riddingaddict.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,9 +19,12 @@ public class ProductDTORequest {
     private double price;
     private int quantity;
     private String shortDescription;
-    private ProductCategory category;
+    //private ProductCategory category;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private BikeType bikeType;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private AccessoryType accessoryType;
 
     private ProductDTORequest(ProductDTORequestBuilder builder) {
@@ -28,7 +32,7 @@ public class ProductDTORequest {
         this.price = builder.price;
         this.quantity = builder.quantity;
         this.shortDescription = builder.shortDescription;
-        this.category = builder.category;
+        //this.category = builder.category;
 
         this.bikeType = builder.bikeType;
         this.accessoryType = builder.accessoryType;
@@ -40,18 +44,25 @@ public class ProductDTORequest {
         private final double price;
         private final int quantity;
         private final String shortDescription;
-        private final ProductCategory category;
+        //private final ProductCategory category;
 
         private BikeType bikeType;
         private AccessoryType accessoryType;
 
 
-        public ProductDTORequestBuilder(String name, double price, int quantity, String shortDescription, ProductCategory category) {
+        //        public ProductDTORequestBuilder(String name, double price, int quantity, String shortDescription, ProductCategory category) {
+//            this.name = name;
+//            this.price = price;
+//            this.quantity = quantity;
+//            this.shortDescription = shortDescription;
+//            this.category = category;
+//        }
+        public ProductDTORequestBuilder(String name, double price, int quantity, String shortDescription) {
             this.name = name;
             this.price = price;
             this.quantity = quantity;
             this.shortDescription = shortDescription;
-            this.category = category;
+            //this.category = category;
         }
 
         public ProductDTORequestBuilder bikeType(BikeType bikeType) {

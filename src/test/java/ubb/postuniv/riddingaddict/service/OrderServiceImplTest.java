@@ -15,7 +15,6 @@ import ubb.postuniv.riddingaddict.exception.ShopException;
 import ubb.postuniv.riddingaddict.model.enums.AccessoryType;
 import ubb.postuniv.riddingaddict.model.enums.BikeType;
 import ubb.postuniv.riddingaddict.model.enums.CardType;
-import ubb.postuniv.riddingaddict.model.enums.ProductCategory;
 import ubb.postuniv.riddingaddict.model.orderFactory.FactoryProvider;
 import ubb.postuniv.riddingaddict.model.pojo.*;
 import ubb.postuniv.riddingaddict.repository.AppUserRepository;
@@ -28,7 +27,6 @@ import java.util.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -88,16 +86,16 @@ class OrderServiceImplTest {
     @BeforeAll
     void setup() {
 
-        bike = ProductFactory.getProductRequest(ProductCategory.BIKE, PRODUCT_NAME, PRICE, QUANTITY, "", BikeType.MOUNTAINBIKE, null);
+        bike = ProductFactory.getProductRequest(PRODUCT_NAME, PRICE, QUANTITY, "", BikeType.MOUNTAINBIKE, null);
         bike.setProductCode(PRODUCT_CODE);
 
-        bikeWith0Stock = ProductFactory.getProductRequest(ProductCategory.BIKE, PRODUCT_NAME, PRICE, 0, "", BikeType.MOUNTAINBIKE, null);
+        bikeWith0Stock = ProductFactory.getProductRequest(PRODUCT_NAME, PRICE, 0, "", BikeType.MOUNTAINBIKE, null);
         bikeWith0Stock.setProductCode(PRODUCT_CODE);
 
-        anotherBike = ProductFactory.getProductRequest(ProductCategory.BIKE, PRODUCT_NAME, PRICE, QUANTITY, "", BikeType.MOUNTAINBIKE, null);
+        anotherBike = ProductFactory.getProductRequest(PRODUCT_NAME, PRICE, QUANTITY, "", BikeType.MOUNTAINBIKE, null);
         anotherBike.setProductCode(PRODUCT_CODE_2);
 
-        accessory = ProductFactory.getProductRequest(ProductCategory.ACCESSORY, PRODUCT_NAME_1, PRICE, QUANTITY, "", null, AccessoryType.LOCKS);
+        accessory = ProductFactory.getProductRequest(PRODUCT_NAME_1, PRICE, QUANTITY, "", null, AccessoryType.LOCKS);
         accessory.setProductCode(PRODUCT_CODE_1);
 
         productList = Arrays.asList(bike, accessory);

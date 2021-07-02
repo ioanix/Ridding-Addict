@@ -104,7 +104,7 @@ public class ProductController {
 
         log.info("productDto = {}", productDtoRequest);
 
-        categoryValidator.validate(productDtoRequest.getCategory().getProductCategory());
+        //categoryValidator.validate(productDtoRequest.getCategory().getProductCategory());
 
         productService.updateProduct(productRequestMapper.convertDtoToModel(productDtoRequest), productCode);
     }

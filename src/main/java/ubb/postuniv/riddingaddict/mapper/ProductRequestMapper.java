@@ -14,7 +14,14 @@ public class ProductRequestMapper extends AbstractMapper<Product, ProductDTORequ
     @Override
     public Product convertDtoToModel(ProductDTORequest productDtoRequest) {
 
-        return ProductFactory.getProductRequest(productDtoRequest.getCategory(),
+//        return ProductFactory.getProductRequest(productDtoRequest.getCategory(),
+//                productDtoRequest.getName(),
+//                productDtoRequest.getPrice(),
+//                productDtoRequest.getQuantity(),
+//                productDtoRequest.getShortDescription(),
+//                productDtoRequest.getBikeType(),
+//                productDtoRequest.getAccessoryType());
+        return ProductFactory.getProductRequest(
                 productDtoRequest.getName(),
                 productDtoRequest.getPrice(),
                 productDtoRequest.getQuantity(),
@@ -32,7 +39,7 @@ public class ProductRequestMapper extends AbstractMapper<Product, ProductDTORequ
 
             Bike bike = (Bike) product;
 
-            productDtoRequest = new ProductDTORequest.ProductDTORequestBuilder(bike.getName(), bike.getPrice(), bike.getQuantity(), bike.getShortDescription(), bike.getCategory())
+            productDtoRequest = new ProductDTORequest.ProductDTORequestBuilder(bike.getName(), bike.getPrice(), bike.getQuantity(), bike.getShortDescription())
                     .bikeType(bike.getBikeType())
                     .build();
         }
@@ -41,7 +48,7 @@ public class ProductRequestMapper extends AbstractMapper<Product, ProductDTORequ
 
             Accessory accessory = (Accessory) product;
 
-            productDtoRequest = new ProductDTORequest.ProductDTORequestBuilder(accessory.getName(), accessory.getPrice(), accessory.getQuantity(), accessory.getShortDescription(), accessory.getCategory())
+            productDtoRequest = new ProductDTORequest.ProductDTORequestBuilder(accessory.getName(), accessory.getPrice(), accessory.getQuantity(), accessory.getShortDescription())
                     .accessoryType(accessory.getAccessoryType())
                     .build();
         }

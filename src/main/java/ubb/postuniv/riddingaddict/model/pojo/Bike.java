@@ -29,4 +29,9 @@ public class Bike extends Product {
         super(productCode, name, price, quantity, shortDescription, category, dateAdded);
         this.bikeType = bikeType;
     }
+
+    public Bike(String name, double price, int quantity, String shortDescription, BikeType bikeType) {
+        super(name, price, quantity, shortDescription);
+        this.bikeType = bikeType;
+    }
 }

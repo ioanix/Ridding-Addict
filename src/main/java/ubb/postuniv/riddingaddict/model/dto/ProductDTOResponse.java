@@ -1,9 +1,11 @@
 package ubb.postuniv.riddingaddict.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import springfox.documentation.spring.web.json.Json;
 import ubb.postuniv.riddingaddict.model.enums.AccessoryType;
 import ubb.postuniv.riddingaddict.model.enums.BikeType;
 import ubb.postuniv.riddingaddict.model.enums.ProductCategory;
@@ -24,7 +26,10 @@ public class ProductDTOResponse {
     private ProductCategory category;
     private LocalDate dateAdded;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private BikeType bikeType;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private AccessoryType accessoryType;
 
     private ProductDTOResponse(ProductDTOResponse.ProductDTOResponseBuilder builder) {
